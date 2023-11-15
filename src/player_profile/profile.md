@@ -8,7 +8,8 @@ See [Example's Setup](../intro.html#examples-setup) for context.
 Solscan.io links:
 
 * [Wallet](https://solscan.io/account/2yodqKtkdNJXxJv21s5YMVG8bjscaezLVFRfnWra5D77)
-* [Profile](https://solscan.io/account/8bAzn7Dcv4msX8wMcoaxjm5TvmDr9AKqN3QhQxGxSTjS)
+* [Profile](https://solscan.io/account/8bAzn7Dcv4msX8wMcoaxjm5TvmDr9AKqN3QhQxGxSTjS)\
+* [Profile Faction](https://solscan.io/account/Gdedj5HxcfQ7t5Ni5mAjAVcMxr7jDanpTrb9QEULNpJQ)
 
 ## Get Program Accounts (first) From Connection
 
@@ -39,6 +40,7 @@ console.log(accountInfo); // 8bAzn7Dcv4msX8wMcoaxjm5TvmDr9AKqN3QhQxGxSTjS
 ```typescript
 import { readAllFromRPC } from '@staratlas/data-source';
 import { PLAYER_PROFILE_IDL, PlayerProfile  } from '@staratlas/player-profile';
+import { PROFILE_FACTION_IDL, ProfileFactionAccount } from '@staratlas/profile-faction';
 
 const playerProfileProgram = new Program(
     PLAYER_PROFILE_IDL,
@@ -65,5 +67,24 @@ const profiles = await readAllFromRPC(
 );
 
 console.log('profiles found', profiles.length); // 1
-console.log(profiles[0].key.toBase58()); // 8bAzn7Dcv4msX8wMcoaxjm5TvmDr9AKqN3QhQxGxSTjS
+
+const [profile] = profiles;
+
+if (profile.type == 'ok') {
+    console.log(profile.key.toBase58()); // 8bAzn7Dcv4msX8wMcoaxjm5TvmDr9AKqN3QhQxGxSTjS
+
+     // Profile Faction
+     const profileFactionProgram = new Program(
+        PROFILE_FACTION_IDL,
+        new PublicKey('pFACSRuobDmvfMKq1bAzwj27t6d2GJhSCHb1VcfnRmq'),
+        provider
+     );
+
+    // the Profile Faction is needed in SAGE instructions
+    const [profileFaction] = ProfileFactionAccount.findAddress(
+        profileFactionProgram,
+        profile.key,
+    );
+    console.log(profileFaction.toBase58()); // Gdedj5HxcfQ7t5Ni5mAjAVcMxr7jDanpTrb9QEULNpJQ
+}
 ```

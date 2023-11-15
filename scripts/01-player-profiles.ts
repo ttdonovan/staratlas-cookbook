@@ -1,9 +1,9 @@
 import { AnchorProvider, Program, Wallet } from '@project-serum/anchor';
 import { Connection, Keypair, PublicKey } from '@solana/web3.js';
-import bs58 from 'bs58';
 
 import { readAllFromRPC } from '@staratlas/data-source';
 import { PLAYER_PROFILE_IDL, PlayerProfile  } from '@staratlas/player-profile';
+import { PROFILE_FACTION_IDL, ProfileFactionAccount } from '@staratlas/profile-faction';
 
 const rpc_url = Bun.env.SOLANA_RPC_URL || 'http://localhost:8899';
 const connection = new Connection(rpc_url, 'confirmed');
@@ -62,4 +62,23 @@ const profiles = await readAllFromRPC(
 );
 
 console.log('profiles found', profiles.length); // 1
-console.log(profiles[0].key.toBase58()); // 8bAzn7Dcv4msX8wMcoaxjm5TvmDr9AKqN3QhQxGxSTjS
+
+const [profile] = profiles;
+
+if (profile.type == 'ok') {
+    console.log(profile.key.toBase58()); // 8bAzn7Dcv4msX8wMcoaxjm5TvmDr9AKqN3QhQxGxSTjS
+
+     // Profile Faction
+     const profileFactionProgram = new Program(
+        PROFILE_FACTION_IDL,
+        new PublicKey('pFACSRuobDmvfMKq1bAzwj27t6d2GJhSCHb1VcfnRmq'),
+        provider
+     );
+
+    // the Profile Faction is needed in SAGE instructions
+    const [profileFaction] = ProfileFactionAccount.findAddress(
+        profileFactionProgram,
+        profile.key,
+    );
+    console.log(profileFaction.toBase58()); // Gdedj5HxcfQ7t5Ni5mAjAVcMxr7jDanpTrb9QEULNpJQ
+}
