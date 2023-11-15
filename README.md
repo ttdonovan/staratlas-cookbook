@@ -23,3 +23,11 @@ $ mdbook serve --open
 ## Request for Examples
 
 If you have a request for an example, please open an issue.
+
+## Donations
+
+If you find this project useful, please consider donating to:
+
+[HackMe](https://solscan.io/account/2yodqKtkdNJXxJv21s5YMVG8bjscaezLVFRfnWra5D77) - 2yodqKtkdNJXxJv21s5YMVG8bjscaezLVFRfnWra5D77
+
+More information about _HackMe_ can be found [here](https://github.com/ttdonovan/staratlas-rs/blob/main/utils/wallet-rs/README.md).
