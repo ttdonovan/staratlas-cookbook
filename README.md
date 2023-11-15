@@ -14,7 +14,7 @@ how to accomplish common program tasks, using TypeScript and bindings from
 To read locally:
 
 ```
-$ git clone ...
+$ git clone https://github.com/ttdonovan/staratlas-cookbook.git
 $ cd staratlas-cookbook
 $ cargo install mdbook
 $ mdbook serve --open
