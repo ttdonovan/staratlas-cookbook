@@ -1,0 +1,6 @@
+[book]
+authors = ["Tanner Donovan"]
+language = "en"
+multilingual = false
+src = "src"
+title = "A Star Atlas Cookbook"

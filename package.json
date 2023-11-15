@@ -1,0 +1,15 @@
+{
+  "name": "staratlas-cookbook",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@staratlas/sage": "^0.9.7",
+    "bs58": "^5.0.0"
+  }
+}
