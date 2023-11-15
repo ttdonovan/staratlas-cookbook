@@ -1,6 +1,5 @@
 import { AnchorProvider, Program, Wallet } from '@project-serum/anchor';
 import { Connection, Keypair, PublicKey } from '@solana/web3.js';
-import bs58 from 'bs58';
 
 import { byteArrayToString, readAllFromRPC } from '@staratlas/data-source';
 import { SAGE_IDL, Fleet } from '@staratlas/sage';

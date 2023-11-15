@@ -8,3 +8,5 @@
 - [Sage](./sage.md)
   - [Game](./sage/game.md)
   - [Fleets](./sage/fleets.md)
+  - [Planets](./sage/planets.md)
+  - [Starbases](./sage/starbases.md)
