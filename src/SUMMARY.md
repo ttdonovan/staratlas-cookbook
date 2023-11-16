@@ -2,6 +2,7 @@
 
 [Introduction](./intro.md)
 [About](./about.md)
+[Tips](./tips.md)
 
 - [Player Profile](./player_profile.md)
   - [Profile](./player_profile/profile.md)

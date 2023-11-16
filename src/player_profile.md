@@ -1,5 +1,12 @@
 # Player Profile
 
+See [Example's Setup](../intro.html#examples-setup) for context.
+
+* https://build.staratlas.com/dev-resources/mainnet-program-ids
+* https://build.staratlas.com/dev-resources/apis-and-data/player-profile
+
+## Recipes
+
 | Recipe                                                                        |
 |-------------------------------------------------------------------------------|
 | [Get Program Accounts (first) From Connection][ex-get-program-accounts]       |

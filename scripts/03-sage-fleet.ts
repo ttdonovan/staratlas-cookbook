@@ -53,3 +53,16 @@ if (fleet.type == 'ok') {
     console.log(byteArrayToString(account.data.fleetLabel)); // Hyena Fleet (as of 2023-11-14)
     console.log(JSON.stringify(account.state)); // {"Idle":{"sector":["-28","1e"]}}
 }
+
+// example why you might want to use `readAllFromRPC` instead of `program.account.fleet.all`
+// the 'remaining data' is not read which includes the Fleet's state
+const [fleetAccount] = await sageProgram.account.fleet.all([
+    {
+        memcmp: {
+            offset: 41, // 8 (discriminator) + 1 (version) + 32 (gameId)
+            bytes: playerProfileId.toBase58(), // ownerProfile
+        },
+    },
+]);
+
+console.log(fleetAccount); // ProgramAccount !== Fleet (DecodedAccountData)
