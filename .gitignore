@@ -1,3 +1,5 @@
 book
+dist
 node_modules
+target
 .env

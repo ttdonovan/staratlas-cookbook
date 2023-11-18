@@ -1,0 +1,19 @@
+{
+  "name": "00-basic",
+  "module": "index.ts",
+  "main": "index.ts",
+  "type": "module",
+  "scripts": {
+    "build": "bun run build.ts"
+  },
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@solana/web3.js": "^1.87.6",
+    "buffer": "^6.0.3"
+  }
+}
