@@ -35,3 +35,8 @@ trunk serve
 * https://bevyengine.org/examples/
 * https://github.com/nshen/vite-plugin-wasm-pack/tree/main
 * https://guptanikhil.medium.com/rust-wasm-breakout-game-i-1b474e41a132
+
+```
+bun run wasm
+bun run dev
+```
