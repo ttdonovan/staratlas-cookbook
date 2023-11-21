@@ -1,26 +1,6 @@
 # Tutorials _WIP_
 
-A _wip_ collection of tutorials, web wallets and wasm...
-
-## 00-basic
-
-* https://macroquad.rs/
-* https://github.com/not-fl3/macroquad
-* https://github.com/solana-labs/wallet-adapter
-
-```
-# build wasm
-cargo build --target wasm32-unknown-unknown
-
-mkdir target
-cp ../../target/wasm32-unknown-unknown/debug/sa-cookbook-basic.wasm dist/.
-
-# bun init .
-bun build index.ts --outfile=dist/bundle.js
-
-# cargo install basic-http-server
-basic-http-server .
-```
+A _wip_ of tutorials, web wallets and wasm...
 
 ## 00-wallet
 

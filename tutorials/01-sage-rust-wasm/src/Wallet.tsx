@@ -12,6 +12,9 @@ import { clusterApiUrl } from '@solana/web3.js';
 // Default styles that can be overridden by your app
 import '@solana/wallet-adapter-react-ui/styles.css';
 
+// import App from './App.tsx';
+import init, { run_bevy_app } from '../rust-wasm-lib/pkg/rust-wasm-lib.js';
+
 const Wallet: FC = () => {
     // The network can be set to 'devnet', 'testnet', or 'mainnet-beta'.
     const network = WalletAdapterNetwork.Devnet;
@@ -45,8 +48,9 @@ const Wallet: FC = () => {
                 <WalletModalProvider>
                     <WalletMultiButton />
                     <WalletDisconnectButton />
-                    { /* Your app's components go here, nested within the context providers. */ }
-                    <SendSOLToRandomAddress />
+                    {/* <SendSOLToRandomAddress /> */}
+                    {/* <App /> */}
+                    <PlayGame />
                 </WalletModalProvider>
             </WalletProvider>
         </ConnectionProvider>
@@ -58,45 +62,58 @@ import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import { Keypair, SystemProgram, Transaction } from '@solana/web3.js';
 import { useCallback } from 'react';
 
-// Try to import wasm moduel js file
-import { init } from '../../00-wasm-bevy/dist/wasm-bevy-minigame-ec8a4af15160a4f7.js';
+// const SendSOLToRandomAddress: FC = () => {
+//     const { connection } = useConnection();
+//     const { publicKey, sendTransaction } = useWallet();
 
-const SendSOLToRandomAddress: FC = () => {
+//     const onClick = useCallback(async () => {
+//         if (!publicKey) throw new WalletNotConnectedError();
+
+//         // 890880 lamports as of 2022-09-01
+//         const lamports = await connection.getMinimumBalanceForRentExemption(0);
+
+//         const transaction = new Transaction().add(
+//             SystemProgram.transfer({
+//                 fromPubkey: publicKey,
+//                 toPubkey: Keypair.generate().publicKey,
+//                 lamports,
+//             })
+//         );
+
+//         const {
+//             context: { slot: minContextSlot },
+//             value: { blockhash, lastValidBlockHeight }
+//         } = await connection.getLatestBlockhashAndContext();
+
+//         console.log({ minContextSlot, blockhash, lastValidBlockHeight, transaction });
+
+//         // const signature = await sendTransaction(transaction, connection, { minContextSlot });
+//         // await connection.confirmTransaction({ blockhash, lastValidBlockHeight, signature });
+//     }, [publicKey, sendTransaction, connection]);
+
+//     return (
+//         <button onClick={onClick} disabled={!publicKey}>
+//             Send SOL to a random address!
+//         </button>
+//     );
+// }
+
+const PlayGame: FC = () => {
     const { connection } = useConnection();
-    const { publicKey, sendTransaction } = useWallet();
+    const { publicKey } = useWallet();
 
-    const onClick = useCallback(async () => {
-        if (!publicKey) throw new WalletNotConnectedError();
-
-        // 890880 lamports as of 2022-09-01
-        const lamports = await connection.getMinimumBalanceForRentExemption(0);
-
-        const transaction = new Transaction().add(
-            SystemProgram.transfer({
-                fromPubkey: publicKey,
-                toPubkey: Keypair.generate().publicKey,
-                lamports,
-            })
-        );
-
-        const {
-            context: { slot: minContextSlot },
-            value: { blockhash, lastValidBlockHeight }
-        } = await connection.getLatestBlockhashAndContext();
-
-        console.log({ minContextSlot, blockhash, lastValidBlockHeight, transaction });
-
-        // call wasm module
-        init('/wasm-bevy-minigame-ec8a4af15160a4f7_bg.wasm');
-
-        // const signature = await sendTransaction(transaction, connection, { minContextSlot });
-        // await connection.confirmTransaction({ blockhash, lastValidBlockHeight, signature });
-    }, [publicKey, sendTransaction, connection]);
+    const runBevyApp = async () => {
+      if (!publicKey) throw new WalletNotConnectedError();
+      console.log(publicKey.toBase58());
+  
+      await init('../rust-wasm-lib/pkg/rust-wasm-lib_bg.wasm');
+      run_bevy_app();
+    }
 
     return (
-        <button onClick={onClick} disabled={!publicKey}>
-            Send SOL to a random address!
-        </button>
+      <button onClick={runBevyApp} disabled={!publicKey}>
+        Let's Play!
+      </button>
     );
 }
 

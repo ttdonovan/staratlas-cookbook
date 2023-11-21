@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 
-// import init, { run_bevy_app } from 'rust-wasm-lib';
+import init, { run_bevy_app } from '../rust-wasm-lib/pkg/rust-wasm-lib.js';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -9,7 +9,7 @@ function App() {
   const runBevyApp = async () => {
     setCount((count) => count + 1);
 
-    await init();
+    await init('../rust-wasm-lib/pkg/rust-wasm-lib_bg.wasm');
     run_bevy_app();
   }
 
