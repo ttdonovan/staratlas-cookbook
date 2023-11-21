@@ -8,7 +8,9 @@ mod fleet;
 mod movement;
 
 #[wasm_bindgen]
-pub fn run_bevy_app() {
+pub fn run_bevy_app(fleets: Option<String>) {
+    web_sys::console::log_2(&"RUST WASM: ".into(), &fleets.into());
+
     App::new()
         // Bevy build-ins
         .insert_resource(ClearColor(Color::rgb(0.1, 0.0, 0.15)))

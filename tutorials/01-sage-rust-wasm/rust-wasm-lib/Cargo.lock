@@ -2869,6 +2869,7 @@ dependencies = [
  "bevy",
  "bevy_embedded_assets",
  "wasm-bindgen",
+ "web-sys",
 ]
 
 [[package]]
