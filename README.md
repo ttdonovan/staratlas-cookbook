@@ -4,6 +4,8 @@ This _Star Atlas Cookbook_ is a collection of simple SAGE examples that demonstr
 how to accomplish common program tasks, using the TypeScript and bindings from
 [Star Atlas Build](https://build.staratlas.com/).
 
+View the [Star Atlas Cookbook](https://ttdonovan.github.io/staratlas-cookbook/).
+
 ## Requirements
 
 * [Rust](https://rustup.rs/)
