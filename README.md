@@ -1,7 +1,7 @@
 # A Star Atlas Cookbook
 
 This _Star Atlas Cookbook_ is a collection of simple SAGE examples that demonstrate
-how to accomplish common program tasks, using TypeScript and bindings from
+how to accomplish common program tasks, using the TypeScript and bindings from
 [Star Atlas Build](https://build.staratlas.com/).
 
 ## Requirements
@@ -23,6 +23,10 @@ $ mdbook serve --open
 ## Request for Examples
 
 If you have a request for an example, please open an issue.
+
+## Cannot find what you are looking for?
+
+Be sure to check out the curated list of ["Awesome Star Atlas"](src/awesome.md).
 
 ## Donations
 

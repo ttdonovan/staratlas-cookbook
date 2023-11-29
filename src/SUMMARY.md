@@ -2,6 +2,7 @@
 
 [Introduction](./intro.md)
 [About](./about.md)
+[Awesome Star Atlas](./awesome.md)
 [Tips](./tips.md)
 
 - [Player Profile](./player_profile.md)
@@ -11,3 +12,4 @@
   - [Fleets](./sage/fleets.md)
   - [Planets](./sage/planets.md)
   - [Starbases](./sage/starbases.md)
+
