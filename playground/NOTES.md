@@ -6,6 +6,11 @@
 
 * https://bun.sh/guides/ecosystem/vite
 
+```
+# https://solanacookbook.com/gaming/game-sdks.html#next-js-react-anchor
+$ bunx create-solana-dapp my-app
+```
+
 ## Setup
 
 ```bash
@@ -27,3 +32,12 @@ bun install @solana/web3.js @solana/wallet-adapter-base @solana/wallet-adapter-r
 ```bash
 bun install @chakra-ui/react @emotion/react @emotion/styled framer-motion
 ```
+
+### Monaco Editor 
+
+ * https://github.com/microsoft/monaco-editor
+ * https://microsoft.github.io/monaco-editor/
+
+### Redux Toolkit
+
+* https://redux-toolkit.js.org/tutorials/typescript
